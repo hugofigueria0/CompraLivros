@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pt.ipg.compralivros">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".dentro_dos_livros_eliminar"
+            android:label="@string/title_activity_dentro_dos_livros_eliminar"
+            android:parentActivityName=".DentroDosLivros"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.DentroDosLivros" />
+        </activity>
+        <activity
+            android:name=".dentro_dos_livros_inserir"
+            android:label="@string/title_activity_dentro_dos_livros_inserir"
+            android:parentActivityName=".DentroDosLivros"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.DentroDosLivros" />
+        </activity>
+        <activity
+            android:name=".dentro_dos_livros_alterar"
+            android:label="@string/title_activity_dentro_dos_livros_alterar"
+            android:parentActivityName=".DentroDosLivros"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.DentroDosLivros" />
+        </activity>
+        <activity
+            android:name=".DentroDaBandaDesenhada"
+            android:label="@string/title_activity_dentro_da_banda_desenhada"
+            android:parentActivityName=".Menu"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.Menu" />
+        </activity>
+        <activity
+            android:name=".DentroDoComprar"
+            android:label="@string/title_activity_dentro_do_comprar"
+            android:parentActivityName=".Menu"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.Menu" />
+        </activity>
+        <activity
+            android:name=".DentroDosLivros"
+            android:label="@string/title_activity_dentro_dos_livros"
+            android:parentActivityName=".Menu"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.Menu" />
+        </activity>
+        <activity
+            android:name=".Menu"
+            android:label="@string/title_activity_menu"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider
+            android:name=".LivrosContentProvider"
+            android:authorities="pt.ipg.compralivros"
+            android:exported="false" />
+    </application>
+
+</manifest>
