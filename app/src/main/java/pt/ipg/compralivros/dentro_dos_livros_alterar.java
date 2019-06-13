@@ -109,14 +109,14 @@ public class dentro_dos_livros_alterar extends AppCompatActivity  implements Loa
 
         String data = editTextData.getText().toString();
 
-        if (titulo.trim().isEmpty()) {
+        if (data.length() != 4) {
             editTextData.setError("Preencha o titulo");
             return;
         }
 
         String Categoria = editTextCategoria.getText().toString();
 
-        if (titulo.trim().isEmpty()) {
+        if (Categoria.trim().isEmpty()) {
             editTextCategoria.setError("Preencha o titulo");
             return;
         }
