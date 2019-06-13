@@ -62,9 +62,9 @@ public class dentro_dos_livros_inserir extends AppCompatActivity implements Load
             return;
 
         }
-        if(Data.trim().length() == 0){
+        if(Data.length() != 4 ){
 
-            editeditTextData.setError("Data Invalida");
+            editeditTextData.setError("Adicionar o ano até 4 digitos ");
             editeditTextData.requestFocus();
             return;
 

@@ -2,11 +2,11 @@
     <string name="app_name">CompraLivros</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_menu">Menu</string>
-    <string name="title_activity_dentro_dos_livros">DentroDosLivros</string>
-    <string name="title_activity_dentro_do_comprar">DentroDoComprar</string>
-    <string name="title_activity_dentro_da_banda_desenhada">DentroDaBandaDesenhada</string>
-    <string name="title_activity_dentro_do_livros_alterar">dentro_do_livros_alterar</string>
-    <string name="title_activity_dentro_dos_livros_eliminar">dentro_dos_livros_eliminar</string>
-    <string name="title_activity_dentro_dos_livros_alterar">dentro_dos_livros_alterar</string>
-    <string name="title_activity_dentro_dos_livros_inserir">dentro_dos_livros_inserir</string>
+    <string name="title_activity_dentro_dos_livros">Livros</string>
+    <string name="title_activity_dentro_do_comprar">Comprar</string>
+    <string name="title_activity_dentro_da_banda_desenhada">Banda Desenhada</string>
+    <string name="title_activity_dentro_do_livros_alterar">Alterar</string>
+    <string name="title_activity_dentro_dos_livros_eliminar">Eliminar</string>
+    <string name="title_activity_dentro_dos_livros_alterar">Alterar</string>
+    <string name="title_activity_dentro_dos_livros_inserir">Inserir</string>
 </resources>

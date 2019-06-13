@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CompraLivros</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_dentro_da_banda_desenhada">Comicbooks</string>
+    <string name="title_activity_dentro_do_comprar">Buy</string>
+    <string name="title_activity_dentro_do_livros_alterar">Change</string>
+    <string name="title_activity_dentro_dos_livros">Book</string>
+    <string name="title_activity_dentro_dos_livros_alterar">Changer</string>
+    <string name="title_activity_dentro_dos_livros_eliminar">Delete</string>
+    <string name="title_activity_dentro_dos_livros_inserir">Add</string>
+    <string name="title_activity_menu">Menu</string>
+</resources>
