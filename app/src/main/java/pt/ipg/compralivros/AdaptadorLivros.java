@@ -70,7 +70,7 @@ public class AdaptadorLivros extends RecyclerView.Adapter<AdaptadorLivros.ViewHo
 
             textViewTitulo = (TextView) itemView.findViewById(R.id.textViewTitulo);
             textViewCategoria = (TextView) itemView.findViewById(R.id.textViewCategoria);
-            textViewPagina = (TextView) itemView.findViewById(R.id.textViewPagina);
+            textViewPagina = (TextView) itemView.findViewById(R.id.textViewData);
 
             itemView.setOnClickListener(this);
         }

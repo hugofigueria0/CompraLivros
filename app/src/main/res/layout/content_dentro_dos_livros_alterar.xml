@@ -10,8 +10,8 @@ tools:showIn="@layout/activity_dentro_dos_livros_alterar">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,15 +68,19 @@ tools:showIn="@layout/activity_dentro_dos_livros_alterar">
             android:id="@+id/Alterar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
             android:onClick="Alterar"
-            android:text="Alterar" />
+            android:text="Alterar"
+            android:textColor="@color/colorPrimaryDark" />
 
         <Button
             android:id="@+id/Cancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
             android:onClick="Cancelar"
-            android:text="Cancelar" />
+            android:text="Cancelar"
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 

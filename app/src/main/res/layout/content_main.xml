@@ -10,16 +10,24 @@
 
     <Button
         android:id="@+id/Menu"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:background="@drawable/snews"
+        android:lineSpacingExtra="36sp"
         android:onClick="menu"
+        android:shadowColor="#00BD2D2D"
         android:text="Menu"
+        android:textColor="@android:color/holo_orange_light"
+        android:textColorHighlight="#00D8B4B4"
+        android:textColorHint="#00B44C4C"
+        android:textSize="36sp"
+        android:textStyle="bold|italic"
+        android:typeface="monospace"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

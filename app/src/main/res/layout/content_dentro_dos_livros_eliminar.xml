@@ -18,65 +18,84 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout3"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:hint="Titulo">
+            android:text="Titulo"
+            android:textColor="@color/colorAccent" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout4"
+        <TextView
+            android:id="@+id/textViewTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Categorias">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCategoria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:hint="Data">
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextData"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Categoria"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/textViewCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Data"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/textViewData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:enabled="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
         <Button
             android:id="@+id/Eliminar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Eliminar"
-            android:text="Eliminar" />
+            android:text="Eliminar"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@color/cardview_light_background"/>
 
         <Button
             android:id="@+id/Cancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/cardview_light_background"
             android:onClick="Cancelar"
-            android:text="Cancelar" />
+            android:text="Cancelar"
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,14 +69,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Guardar"
-            android:text="Guardar" />
+            android:text="Guardar"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@color/cardview_light_background"/>
 
         <Button
             android:id="@+id/Cancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Cancelar"
-            android:text="Cancelar" />
+            android:text="Cancelar"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@color/cardview_light_background"/>
 
     </LinearLayout>
 

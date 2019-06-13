@@ -1,18 +1,21 @@
 package pt.ipg.compralivros;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class dentro_dos_livros_eliminar extends AppCompatActivity {
+
+    private Uri enderecoLivroApagar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,42 @@ public class dentro_dos_livros_eliminar extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        TextView textViewTitulo = (TextView) findViewById(R.id.textViewTitulo);
+        TextView textViewCategoria = (TextView) findViewById(R.id.textViewCategoria);
+        TextView textViewData = (TextView) findViewById(R.id.textViewData);
+
+        Intent intent = getIntent();
+
+        long idLivro = intent.getLongExtra(DentroDosLivros.ID_LIVRO, -1);
+
+        if (idLivro == -1) {
+            Toast.makeText(this, "Erro: não foi possível apagar o livro", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+        enderecoLivroApagar = Uri.withAppendedPath(LivrosContentProvider.ENDERECO_LIVROS, String.valueOf(idLivro));
+
+        Cursor cursor = getContentResolver().query(enderecoLivroApagar, BdTableLivros.TODAS_COLUNAS, null, null, null);
+
+        if (!cursor.moveToNext()) {
+            Toast.makeText(this, "Erro: não foi possível apagar o livro", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
+
+        Livro livro = Livro.fromCursor(cursor);
+
+        textViewTitulo.setText(livro.getTitulo());
+        textViewCategoria.setText(livro.getCategoria());
+        textViewData.setText(String.valueOf(livro.getData()));
+
     }
+
 
     public void Cancelar(View view){
         Toast.makeText(this, "Cancelar", Toast.LENGTH_LONG).show();
@@ -29,49 +67,24 @@ public class dentro_dos_livros_eliminar extends AppCompatActivity {
     }
 
     public void Eliminar(View view){
-        ValidarEscrita();
+
+        int livrosApagados = getContentResolver().delete(enderecoLivroApagar, null, null);
+
+        if (livrosApagados == 1) {
+            Toast.makeText(this, "Livro eliminado com sucesso", Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            Toast.makeText(this, "Erro: Não foi possível eliminar o livro", Toast.LENGTH_LONG).show();
+        }
+
         Toast.makeText(this, "Foi eliminado", Toast.LENGTH_LONG).show();
-
     }
 
-    public void ValidarEscrita(){
-
-        EditText editeditTextTitulo = (EditText) findViewById(R.id.editTextTitulo);
-        String Livro = editeditTextTitulo.getText().toString();
-
-        EditText editeditTextCategoria = (EditText) findViewById(R.id.editTextCategoria);
-        String Genero = editeditTextCategoria.getText().toString();
-
-        EditText editeditTextData = (EditText) findViewById(R.id.editTextData);
-        String Data = editeditTextData.getText().toString();
-
-        if(Livro.trim().length() == 0){
-
-            editeditTextTitulo.setError("Titulo Invalido");
-            editeditTextTitulo.requestFocus();
-            return;
-
-
-        }
-        if(Genero.trim().length() == 0){
-
-            editeditTextCategoria.setError("Categoria Invalida");
-            editeditTextCategoria.requestFocus();
-            return;
-
-        }
-        if(Data.trim().length() == 0){
-
-            editeditTextData.setError("Data Invalida");
-            editeditTextData.requestFocus();
-            return;
-
-        }
-
-
-        finish();
-
-    }
 
 
 }
+
+
+
+
+
