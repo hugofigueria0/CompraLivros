@@ -18,7 +18,9 @@ public class BdLivrosOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         new BdTableLivros(db).cria();
+        new BdTableCompras(db).cria();
     }
 
 

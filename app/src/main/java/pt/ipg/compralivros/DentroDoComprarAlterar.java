@@ -1,12 +1,12 @@
 package pt.ipg.compralivros;
 
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
@@ -15,101 +15,60 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CursorAdapter;
+import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class DentroDoComprar extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static final int ID_CURSO_LOADER_COMPRAS = 0;
-    public static final String ID_COMPRAS = "ID_COMPRAS";
+public class DentroDoComprarAlterar extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+    private static final int ID_CURSO_LOADER_LIVROS = 0;
 
-    private RecyclerView recyclerViewCompras;
-    private AdaptadorCompras adaptadorCompras;
+    private EditText editTextInserirPrecoAlterar;
+    private Spinner spinnerLivroEditar;
+
+    private Compras compras = null;
+
+    private boolean livroCarregar = false;
+    private boolean livroAtualizados = false;
+
+    private Uri enderecoComprasEditar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dentro_do_comprar);
+        setContentView(R.layout.activity_dentro_do_comprar_alterar);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_COMPRAS, null, this);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerViewCompras = (RecyclerView) findViewById(R.id.recyclerViewCompras);
-        adaptadorCompras = new AdaptadorCompras(this);
-        recyclerViewCompras.setAdapter(adaptadorCompras);
-        recyclerViewCompras.setLayoutManager(new LinearLayoutManager(this));
+        editTextInserirPrecoAlterar = (EditText) findViewById(R.id.InserirPrecoEditar);
+        spinnerLivroEditar = (Spinner) findViewById(R.id.spinnerLivroEditar);
 
+        getSupportLoaderManager().initLoader(ID_CURSO_LOADER_LIVROS, null, this);
 
-    }
+        Intent intent = getIntent();
 
-    @Override
-    protected void onResume() {
-        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_COMPRAS, null, this);
+        long idCompras = intent.getLongExtra(DentroDoComprar.ID_COMPRAS, -1);
 
-        super.onResume();
-    }
-
-    private Menu menu;
-
-    public void atualizaOpcoesMenu() {
-        Compras compras = adaptadorCompras.getComprasSelecionado();
-
-        boolean mostraAlterarEliminar = (compras != null);
-
-        menu.findItem(R.id.action_alterar).setVisible(mostraAlterarEliminar);
-        menu.findItem(R.id.action_eliminar).setVisible(mostraAlterarEliminar);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_comprar, menu);
-
-        this.menu = menu;
-
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_inserir) {
-
-            Intent intent = new Intent(this, DentroDoComprarInserir.class);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_alterar) {
-
-            Intent intent = new Intent(this, DentroDoComprarAlterar.class);
-            intent.putExtra(ID_COMPRAS, adaptadorCompras.getComprasSelecionado().getId());
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_eliminar) {
-
-            Intent intent = new Intent(this, DentroDoComprarEliminar.class);
-            intent.putExtra(ID_COMPRAS, adaptadorCompras.getComprasSelecionado().getId());
-            startActivity(intent);
-            return true;
+        if (idCompras == -1) {
+            Toast.makeText(this, "Erro: não foi possível ler o livro", Toast.LENGTH_LONG).show();
+            finish();
+            return;
         }
-
-        return super.onOptionsItemSelected(item);
     }
+    
+
+    enderecoComprasEditar = Uri.withAppendedPath(LivrosContentProvider., String.valueOf(idLivro));
+
+
+    Cursor cursor = getContentResolver().query(enderecoComprasEditar, BdTableLivros.TODAS_COLUNAS, null, null, null);
 
     /**
      * Instantiate and return a new Loader for the given ID.
@@ -123,10 +82,7 @@ public class DentroDoComprar extends AppCompatActivity implements LoaderManager.
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-
-        CursorLoader cursorLoader = new CursorLoader(this, LivrosContentProvider.ENDERECO_COMPRAS, BdTableCompras.TODAS_COLUNAS, null, null, BdTableCompras.CAMPO_LIVRO);
-
-        return cursorLoader;
+        return null;
     }
 
     /**
@@ -173,8 +129,6 @@ public class DentroDoComprar extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
 
-        adaptadorCompras.setCursor(data);
-
     }
 
     /**
@@ -188,8 +142,6 @@ public class DentroDoComprar extends AppCompatActivity implements LoaderManager.
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
-
-        adaptadorCompras.setCursor(null);
 
     }
 }

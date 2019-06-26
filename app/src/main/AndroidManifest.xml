@@ -10,6 +10,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".DentroDoComprarEliminar"
+            android:label="@string/title_activity_dentro_do_comprar_eliminar"
+            android:parentActivityName=".DentroDoComprar"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.DentroDoComprar" />
+        </activity>
+        <activity
+            android:name=".DentroDoComprarAlterar"
+            android:label="@string/title_activity_dentro_do_comprar_alterar"
+            android:parentActivityName=".DentroDoComprar"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.DentroDoComprar" />
+        </activity>
+        <activity
+            android:name=".DentroDoComprarInserir"
+            android:label="@string/title_activity_dentro_do_comprar_inserir"
+            android:parentActivityName=".DentroDoComprar"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pt.ipg.compralivros.DentroDoComprar" />
+        </activity>
+        <activity
             android:name=".dentro_dos_livros_eliminar"
             android:label="@string/title_activity_dentro_dos_livros_eliminar"
             android:parentActivityName=".DentroDosLivros"
@@ -82,6 +109,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name=".LivrosContentProvider"
             android:authorities="pt.ipg.compralivros"
