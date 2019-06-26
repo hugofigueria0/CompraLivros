@@ -36,4 +36,22 @@
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Button
+        android:id="@+id/Alterar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:onClick="Alterar"
+        android:text="Alterar"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <Button
+        android:id="@+id/Cancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:onClick="Cancelar"
+        android:text="Cancelar"
+        android:textColor="@color/colorPrimaryDark" />
+
 </LinearLayout>

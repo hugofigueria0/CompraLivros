@@ -19,6 +19,7 @@ import androidx.loader.content.Loader;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
@@ -62,13 +63,118 @@ public class DentroDoComprarAlterar extends AppCompatActivity implements LoaderM
             finish();
             return;
         }
+
+        enderecoComprasEditar = Uri.withAppendedPath(LivrosContentProvider.ENDERECO_COMPRAS, String.valueOf(idCompras));
+
+        Cursor cursor = getContentResolver().query(enderecoComprasEditar, BdTableCompras.TODAS_COLUNAS, null, null, null);
+
+        if (!cursor.moveToNext()) {
+            Toast.makeText(this, "Erro: não foi possível ler o livro", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+
+        compras = Compras.fromCursor(cursor);
+
+        editTextInserirPrecoAlterar.setText(String.valueOf(compras.getPreco()));
+
+
+        actualizaComprasSelecionada();
+
     }
-    
 
-    enderecoComprasEditar = Uri.withAppendedPath(LivrosContentProvider., String.valueOf(idLivro));
+    private void actualizaComprasSelecionada() {
+
+        if (!livroCarregar) return;
+        if (livroAtualizados) return;
+
+        for (int i = 0; i < spinnerLivroEditar.getCount(); i++) {
+            if (spinnerLivroEditar.getItemIdAtPosition(i) == compras.getLivro()) {
+                spinnerLivroEditar.setSelection(i);
+                break;
+            }
+        }
+
+        livroAtualizados = true;
+    }
 
 
-    Cursor cursor = getContentResolver().query(enderecoComprasEditar, BdTableLivros.TODAS_COLUNAS, null, null, null);
+    @Override
+    protected void onResume() {
+        getSupportLoaderManager().restartLoader(ID_CURSO_LOADER_LIVROS, null, this);
+
+        super.onResume();
+    }
+
+    private void mostraLivroSpinner(Cursor cursorLivros) {
+        SimpleCursorAdapter adaptadorLivros = new SimpleCursorAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                cursorLivros,
+                new String[]{BdTableLivros.CAMPO_TITULO},
+                new int[]{android.R.id.text1}
+        );
+        spinnerLivroEditar.setAdapter(adaptadorLivros);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_comprar, menu);
+        return true;
+    }
+
+    public void Cancelar(View view){
+        Toast.makeText(this, "Cancelar", Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    public void Alterar(View view){
+
+        ValidarEscrita();
+        Toast.makeText(this, "Foi alterado", Toast.LENGTH_LONG).show();
+
+    }
+
+    public void ValidarEscrita(){
+
+
+        double valor = 0;
+        String conteudoPreco = editTextInserirPrecoAlterar.getText().toString();
+        valor = Double.parseDouble(conteudoPreco);
+
+        if (conteudoPreco.trim().length() == 0){
+            editTextInserirPrecoAlterar.setError("Inserir o Preço");
+            editTextInserirPrecoAlterar.requestFocus();
+            return;
+        } else  if (valor == 0) {
+            editTextInserirPrecoAlterar.setError("Valor maior que 0");
+            editTextInserirPrecoAlterar.requestFocus();
+            return;
+        }
+
+
+        long idLivro = spinnerLivroEditar.getSelectedItemId();
+
+        compras.setLivro(idLivro);
+        compras.setPreco(valor);
+
+
+        try {
+            getContentResolver().update(enderecoComprasEditar, compras.getContentValues(), null, null);
+
+            Toast.makeText(this, "Alterado com sucesso", Toast.LENGTH_SHORT).show();
+            finish();
+        } catch (Exception e) {
+            Snackbar.make(
+                    editTextInserirPrecoAlterar,
+                    "ERROU",
+                    Snackbar.LENGTH_LONG)
+                    .show();
+
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Instantiate and return a new Loader for the given ID.
@@ -82,7 +188,10 @@ public class DentroDoComprarAlterar extends AppCompatActivity implements LoaderM
     @NonNull
     @Override
     public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
-        return null;
+        androidx.loader.content.CursorLoader cursorLoader = new androidx.loader.content.CursorLoader(this, LivrosContentProvider.ENDERECO_LIVROS, BdTableLivros.TODAS_COLUNAS, null, null, BdTableLivros.CAMPO_TITULO
+        );
+
+        return cursorLoader;
     }
 
     /**
@@ -129,6 +238,9 @@ public class DentroDoComprarAlterar extends AppCompatActivity implements LoaderM
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
 
+        mostraLivroSpinner(data);
+        livroCarregar = true;
+        actualizaComprasSelecionada();
     }
 
     /**
@@ -142,6 +254,10 @@ public class DentroDoComprarAlterar extends AppCompatActivity implements LoaderM
      */
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
+
+        livroCarregar = false;
+        livroAtualizados = false;
+        mostraLivroSpinner(null);
 
     }
 }
