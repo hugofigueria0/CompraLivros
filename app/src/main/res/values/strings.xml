@@ -9,7 +9,7 @@
     <string name="title_activity_dentro_dos_livros_eliminar">Eliminar</string>
     <string name="title_activity_dentro_dos_livros_alterar">Alterar</string>
     <string name="title_activity_dentro_dos_livros_inserir">Inserir</string>
-    <string name="title_activity_dentro_do_comprar_inserir">DentroDoComprarInserir</string>
-    <string name="title_activity_dentro_do_comprar_alterar">DentroDoComprarAlterar</string>
-    <string name="title_activity_dentro_do_comprar_eliminar">DentroDoComprarEliminar</string>
+    <string name="title_activity_dentro_do_comprar_inserir">Compras Inserir</string>
+    <string name="title_activity_dentro_do_comprar_alterar">Compras Alterar</string>
+    <string name="title_activity_dentro_do_comprar_eliminar">Compras Eliminar</string>
 </resources>

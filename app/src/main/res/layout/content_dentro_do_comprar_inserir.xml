@@ -7,7 +7,9 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DentroDoComprarInserir"
-    tools:showIn="@layout/activity_dentro_do_comprar_inserir" >
+    tools:showIn="@layout/activity_dentro_do_comprar_inserir"
+
+    android:background="#65E4D9">
 
     <Spinner
         android:id="@+id/spinnerLivro"

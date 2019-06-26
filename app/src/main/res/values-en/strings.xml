@@ -10,4 +10,7 @@
     <string name="title_activity_dentro_dos_livros_eliminar">Delete</string>
     <string name="title_activity_dentro_dos_livros_inserir">Add</string>
     <string name="title_activity_menu">Menu</string>
+    <string name="title_activity_dentro_do_comprar_alterar">Buy Edit</string>
+    <string name="title_activity_dentro_do_comprar_eliminar">Buy Delete</string>
+    <string name="title_activity_dentro_do_comprar_inserir">Buy Add</string>
 </resources>

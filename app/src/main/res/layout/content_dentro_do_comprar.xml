@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DentroDoComprar"
-    tools:showIn="@layout/activity_dentro_do_comprar">
+    tools:showIn="@layout/activity_dentro_do_comprar"
+
+    android:background="#65E4D9">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCompras"

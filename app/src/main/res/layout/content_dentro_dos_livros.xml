@@ -6,7 +6,9 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
 tools:context=".DentroDosLivros"
-tools:showIn="@layout/activity_dentro_dos_livros">
+tools:showIn="@layout/activity_dentro_dos_livros"
+
+    android:background="#65E4D9">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewLivros"

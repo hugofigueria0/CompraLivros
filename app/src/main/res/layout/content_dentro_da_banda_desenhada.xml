@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".DentroDaBandaDesenhada"
-    tools:showIn="@layout/activity_dentro_da_banda_desenhada">
+    tools:showIn="@layout/activity_dentro_da_banda_desenhada"
+    android:background="#65E4D9">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
